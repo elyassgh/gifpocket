@@ -1,0 +1,82 @@
+<!doctype html>
+<%- include('./partials/head') %> 
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-3">Search for gifs here</h1>
+            <hr class="my-2">
+            <p>Gif Pocket, will offer the latest gifs from giphy images</p>
+            <form action="/search" method="post">
+                <div class="form-group">
+                    <input required type="text" name="query" id="" class="form-control" placeholder="search ..."
+                        aria-describedby="helpId">
+                    <small id="helpId" class="text-muted">Please enter a tag.</small>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <% if (locals.searches) { %>
+    <div class="container">
+        <div class="row">
+                <% searches.forEach(function(search){ %>
+                <%- include('./searchItem', {searchItem: search}); %>
+                <% }); %>
+        </div>
+    </div>
+    <% } %>
+
+
+    <!-- Button trigger modal -->
+    <button hidden id="modalbtn" type="button" data-toggle="modal" data-target="#favmodal">
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="favmodal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Favorite</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to add this item to your favorite ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="add" type="button" class="btn btn-primary">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <button hidden id="procbtn" type="button" data-toggle="modal" data-target="#proccessing">
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="proccessing" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Connecting to the server</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                </div>
+                <div class="modal-body">
+                    Processing
+                </div>
+                <div class="modal-footer">
+                    <button id="closeproc" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<%- include('./partials/footer') %> 
