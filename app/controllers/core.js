@@ -9,7 +9,6 @@
 
 var giphy = require('../util/giphy')
 
-// db based view render
 exports.home = function (req, res) {
     res.render('index')
 }

@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
 
-    search: async function (query, limit, offset) {
+    search: async (query, limit, offset) => {
 
         if (!limit) limit = 25;
         if (!offset) offset = 0;
