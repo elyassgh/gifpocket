@@ -24,12 +24,12 @@ for (const item of items) {
 function addToFavorite(itemSrc) {
     $.ajax({
         type: "post",
-        url: "http://localhost:8080/fav/add/",
+        url: "http://localhost:8080/api/fav/add/",
         data: { url: itemSrc },
         success: function (response) {
             Swal.fire({
                 title: 'Gif Added :)',
-                icon: 'succsess',
+                icon: 'success',
                 showConfirmButton: false,
                 timer: 1500
             })

@@ -4,7 +4,8 @@
  * 
  */
 
-var giphy = require('../util/giphy')
+const giphy = require('../util/giphy')
+const User = require('../models/user')
 
 exports.home = (req, res) => {
     res.render('index')
@@ -37,6 +38,8 @@ exports.search = (req, res) => {
 }
 
 exports.pocket = (req, res) => {
+
+    const user = User.findOne({ email: req.params.email })
 
     res.render('pocket', { user })
 }

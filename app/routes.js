@@ -17,10 +17,15 @@ module.exports =  (app) => {
 
     app.post('/search', core.search)
 
-    app.post('/fav/add', api.favadd)
+    app.post('/api/fav/add', api.favadd)
 
     app.get('/api/search', api.search)
 
-   // app.get('/api/search', core.pocket)
+    app.get('/api/pocket', core.pocket)
+
+    app.post('/api/user/create', api.createUser)
+
+    app.get('/api/user/get', api.fetchUser)
+
 
 }
