@@ -4,7 +4,7 @@
  * 
  */
 
-var express = require('express')
+const express = require('express')
 
 // express app instance
 var app = express()
@@ -19,7 +19,11 @@ app.set('views', __dirname + '/../public/views')
 app.use(express.static(__dirname + '/../public'))
 
 // body parser for request body
-app.use(express.urlencoded())
+/* 
+    url encoded ethod within body-parser tells body-parser to extract data from the
+    <form> element and add them to the body property in the request object.
+*/
+app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 // importing database

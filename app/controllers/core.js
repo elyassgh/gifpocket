@@ -28,7 +28,7 @@ exports.search = function (req, res) {
             .then(result => {
                 var data = result.data
                 res.render('search', {
-                    searches: Object.keys(data).map((key) => [key, data[key]])
+                   searches: Object.keys(data).map((key) => [key, data[key]])
                 })
             })
             .catch(error => {

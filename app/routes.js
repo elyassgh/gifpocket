@@ -8,7 +8,7 @@
 var core = require('./controllers/core')
 var api = require('./controllers/api')
 
-module.exports = function (app){ 
+module.exports =  (app) => { 
 
     app.get('/', core.home)
 

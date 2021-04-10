@@ -29,15 +29,15 @@ module.exports = {
 
     },
 
-    getRandomGif: function () {
+    getRandomGif: async function () {
 
     },
 
-    getTrendingGifs: function (limit) {
+    getTrendingGifs: async function (limit) {
 
     },
 
-    getGifById: function () {
+    getGifById: async function () {
 
     }
 }
