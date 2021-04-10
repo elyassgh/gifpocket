@@ -3,12 +3,9 @@
  *  RESTful type controller
  * 
  */
+const giphy = require('../util/giphy')
 
-// importing the database 
-//var db = require('../util/db')
-var giphy = require('../util/giphy')
-
-exports.search = function (req, res) {
+exports.search = (req, res) => {
     var query = req.query.q
     var offset = req.query.o
     var limit = req.query.l
@@ -23,18 +20,20 @@ exports.search = function (req, res) {
             })
     } else {
         res.json({
-            message: error});
+            message: error
+        });
     }
 }
 
-exports.favadd = function (req, res) {
+exports.favadd = (req, res) => {
 
-    var item = req.params.item
+    var url = req.body.url
 
-    if (query) {
+    if (url) {
         
     } else {
         res.json({
-            message: error});
+            message: error
+        });
     }
 }

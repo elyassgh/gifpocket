@@ -4,16 +4,13 @@
  * 
  */
 
-// importing the database 
-// var db = require('../util/db')
-
 var giphy = require('../util/giphy')
 
-exports.home = function (req, res) {
+exports.home = (req, res) => {
     res.render('index')
 }
 
-exports.search = function (req, res) {
+exports.search = (req, res) => {
 
     var query = req.params.query
     var offset = req.query.offset
@@ -37,4 +34,9 @@ exports.search = function (req, res) {
     } else {
         res.render('search')
     }
+}
+
+exports.pocket = (req, res) => {
+
+    res.render('pocket', { user })
 }

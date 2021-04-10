@@ -17,8 +17,10 @@ module.exports =  (app) => {
 
     app.post('/search', core.search)
 
-    app.post('/fav/:url', api.favadd)
+    app.post('/fav/add', api.favadd)
 
     app.get('/api/search', api.search)
+
+   // app.get('/api/search', core.pocket)
 
 }

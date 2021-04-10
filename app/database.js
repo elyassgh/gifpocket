@@ -3,9 +3,6 @@
  *  Data base file 
  * 
  */
-
-const dbOperations = require('./util/db')
-
 const mongoose = require('mongoose')
 
 mongoose.connect(
@@ -23,7 +20,7 @@ db.once('open', _ => {
 })
 
 db.on('error', err => {
-    console.error('connection error:', err)
+    console.error('Connection error:', err)
 })
 
 
