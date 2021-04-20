@@ -32,11 +32,11 @@ exports.favadd = async (req, res) => {
     var url = req.body.url
 
     const uid = '607221efa0212044acacb5f2'
-    User.findById(uid, (err, user) => {
-        if(user) {
+    await User.findById(uid, async (err, user) => {
+        if (user) {
             if (url) {
 
-                Gif.findOne({
+                await Gif.findOne({
                     url: url,
                     user: user._id
                 }, (err, gif) => {
@@ -49,6 +49,16 @@ exports.favadd = async (req, res) => {
                             if (err) return console.error(err.stack)
                         })
                     }
+                    User.findByIdAndUpdate(
+                        user._id, {
+                            $push: {
+                                gifs: gif._id
+                            }
+                        }, {
+                            new: true,
+                            useFindAndModify: true
+                        }
+                    )
                     res.sendStatus(200)
                 })
             } else {
@@ -61,7 +71,7 @@ exports.favadd = async (req, res) => {
         }
     })
 
-    
+
 }
 
 exports.createUser = (req, res) => {
@@ -81,20 +91,17 @@ exports.createUser = (req, res) => {
 
 }
 
-exports.fetchUser = (req, res) => {
-
-    console.log('here')
-
+exports.fetchUser = async (req, res) => {
 
     const uid = '607221efa0212044acacb5f2'
-    User.findById(uid, (err, user) => {
-        if(user) {
+    await User.findById(uid, (err, user) => {
+        if (user) {
             res.json(user)
         } else {
             res.render('error', {
                 message: 'User not found !!'
             })
         }
-    })
+    }).populate('gifs')
 
 }
